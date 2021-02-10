@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			font-family: 'helvetica new', sans-serif
+		}
+
+		#container {
+			width: 1008px;
+			margin: 2% auto;
+		}
+
+		/* Header Navbar */
+		.parentHeaderTitleDiv {
+			background-color: sandybrown;
+			border: 2px solid black;
+			padding: 5px;
+		}
+
+		.divHeaderTitleLogo {
+			float: left;
+			display: inline-block;
+		}
+
+		.headerTitle {
+			display: inline-block;
+			vertical-align: top;
+			margin-top: 10%;
+		}
+
+		.logoImgPos {
+			width: 100px;
+			display: inline-block;	
+		}
+
+		.loginRegisterLinksDiv {
+			float: right;
+			display: inline-block;
+			margin-top: 1.1em;
+		}
+
+		/* Body / Loging CSS */
+
+		.parentLoginDiv {
+			border: 2px solid black;
+			padding: 10px;
+		}
+
+		.mgB2P {margin-bottom:2%;}
+
+		.mbgT2P {margin-top: 2%;}
+
+		.cfb {clear: both;}
+
+		form {
+			width: 60%;
+		}
+
+		.labelCol {
+			float: left;
+			display: inline-block;
+			width: 30%
+		}
+
+		.inputCol {
+			float: left;
+			display: inline-block;
+			width: 70%;
+			margin-bottom: 10px;
+		}
+
+		.inputCol input {
+			width: 100%;
+			line-height: 30px;
+			border: 1px solid darkgray;
+			border-radius: 5px;
+			font-size: 18px;
+		}
+
+		.submitButton {
+		    display: block;
+		    float: right;
+		    margin-top: 10px;
+		    margin-bottom: 2%;
+		    padding: 5px 10px;
+		    background-color: dodgerblue;
+		    color: white;
+		    border: 2px solid black;
+		    box-shadow: 3px 2px 0px 1px black;
+		    cursor: pointer;			
+		}
+
+		.goBackButton {
+			float: left;
+			display: block;
+			margin-top: 5%;
+			margin-bottom: 2%;
+			padding: 5px 10px;
+			background-color: indianred;
+			color: white;
+			border: 2px solid black;
+			box-shadow: 3px 2px 0px 1px black;
+			cursor: pointer;
+		}
+
+		.goBackButton a {color: white; text-decoration: none;}
+
+		span {color: red;}		
+
+
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div class="parentHeaderTitleDiv">
+			<div class="divHeaderTitleLogo">
+			{% load static %}
+			<img src="{% static 'wall_app/img/brickwall.png' %}" class="logoImgPos">
+
+			<h1 class="headerTitle">The Wall</h1>
+
+			{% load static %}
+			<img src="{% static 'wall_app/img/reversewall.png' %}" class="logoImgPos">
+			</div>
+
+			<div class="cfb"></div>
+
+		</div>
+
+		<div class="parentLoginDiv">
+			<div>
+				<h1 class="mgB2P mbgT2P">Login</h1>
+				<form action="/signin" method="POST">
+					{% csrf_token %}
+					<p></p>
+					<div class="labelCol">
+						<p>Email: </p>
+					</div>
+
+					<div class="inputCol">
+						<input type="text" name="LEmail">
+					</div>
+
+					<div class="labelCol">
+						<p>Password: </p>
+					</div>
+
+					<div class="inputCol">
+						<input type="password" name="LPassword">
+					</div>
+					<div class="cfb"></div>
+
+					<div>
+						<input type="hidden" name="hidden" value="Login" class="submitButton">
+						<input type="submit" name="submit" value="Login" class="submitButton">
+					</div>
+					<div class="cfb"></div>			
+				</form>
+
+				{% for message in messages %}
+					<span>{{message}}</span> <br />
+				{% endfor %}
+			</div>
+
+			<div class="goBackButton">
+				<a href="/">Go Back</a>
+			</div>
+
+			<div class="cfb"></div>	
+		</div>
+	</div>
+
+</body>
+</html>

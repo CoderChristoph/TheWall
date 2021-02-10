@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Success</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#container {
+			width: 1008px;
+			margin: 2% auto;
+		}
+
+		.mgL15PC {margin-left: 15%;}
+
+		.cfb {clear:both;}
+
+		.txtc {text-align: center}
+
+		/****************** Header / Navbar **********************/
+
+		.parentHeaderTitleDiv {
+			background-color: sandybrown;
+			border: 2px solid black;
+			padding: 5px;
+		}
+
+		.divHeaderTitleLogo {
+			float: left;
+			display: inline-block;
+		}
+
+		.headerTitle {
+			display: inline-block;
+			vertical-align: top;
+			margin-top: 10%;
+		}
+
+		.logoImgPos {
+			width: 100px;
+			display: inline-block;	
+		}
+
+		.parentLoginDiv {
+			border: 2px solid black;
+			padding: 10px;
+		}
+
+		.submitButton {
+		    display: block;
+		    float: right;
+		    margin-top: 10px;
+		    margin-bottom: 2%;
+		    padding: 5px 10px;
+		    background-color: dodgerblue;
+		    color: white;
+		    border: 2px solid black;
+		    box-shadow: 3px 2px 0px 1px black;
+		    cursor: pointer;			
+		}
+
+		.submitButton a {
+			color: white;
+			text-decoration: none;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div class="parentHeaderTitleDiv">
+			<div class="divHeaderTitleLogo">
+			{% load static %}
+			<img src="{% static 'wall_app/img/brickwall.png' %}" class="logoImgPos">
+
+			<h1 class="headerTitle">The Wall</h1>
+
+			{% load static %}
+			<img src="{% static 'wall_app/img/reversewall.png' %}" class="logoImgPos">
+
+			<div class="cfb"></div>
+
+			</div>
+			<div class="cfb"></div>
+		</div>
+
+		<div class="parentLoginDiv">
+			<div>
+				<h1 class="mgB10">Success! Welcome, {{request.session.first_name}}</h1>
+
+				{% for message in messages %}
+				<p class="mgB10 successColor"></p>
+				{% endfor %}
+			</div>
+			<div class="submitButton">
+				<a href="/thewall">Enter The Wall</a>
+			</div>
+			<div class="cfb"></div>
+		</div>
+
+	</div>
+
+</body>
+</html>
